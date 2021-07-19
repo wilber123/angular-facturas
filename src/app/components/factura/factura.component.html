@@ -1,0 +1,76 @@
+
+
+    
+
+    <div class="container text-center">
+        <h1 class="mt-5 mb-5">Crear Factura</h1>
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="form-group">
+              <label for="sel1">Seleccione Fecha:</label>
+              <input type="date" class="dateadded form-control" [(ngModel)]="selectedFactura.fechaFactura">
+            </div>
+
+
+            <form>
+                <h4>seleccione cliente</h4>
+                <mat-form-field appearance="fill">
+                   <mat-select placeholder = "Clientes" 
+                      [(ngModel)] = "selectedFactura.cliente" name = "miselect">
+                      <mat-option *ngFor = "let cliente of clienteService.cliente" 
+                         [value] = "cliente">
+                         {{cliente.id}} {{cliente.nombre}} {{cliente.apellido}} {{cliente.email}} {{cliente.nacimiento}} {{cliente.telefono}} {{cliente.direccion}}
+                      </mat-option>
+                   </mat-select>
+                </mat-form-field>
+                <p>{{selectedFactura.fechaFactura}} </p> 
+             </form>
+
+
+          </div> 
+        </div>
+
+
+   
+  
+        
+         
+    
+    
+        
+    <div class="form-group">
+      <button class="btn btn-success btn-lg btn-block" (click)="submitForm()">Crear factura</button>
+    </div>
+
+    <table>
+      <thead>
+          <tr>
+              <th>id</th>
+              <th>Fecha Factura</th>
+              <th>ID cliente</th>
+             
+          </tr>
+      </thead>
+      <tbody>
+         <tr *ngFor="let factura of factura" >
+              <td>{{factura.id}}</td>
+              <td>{{factura.fechaFactura}}</td>
+             
+              <tr *ngFor = "let cliente of clienteService.cliente">
+                <td>{{cliente.id}}</td>
+          </tr>
+        </tr>
+      </tbody>
+  </table>
+    
+  
+
+
+
+
+
+
+
+
+
+
